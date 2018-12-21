@@ -1,4 +1,4 @@
-﻿
+
 package com.notepal;
 
 import java.awt.Color;
@@ -146,7 +146,66 @@ public class NotePal extends JFrame implements ActionListener {
 			}
 
 		});
-		
+		// 注册按键事件
+		jTextArea.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				int keyCode = e.getKeyCode();
+				if (isCtrl) {
+					switch (keyCode) {
+					case KeyEvent.VK_N:
+						event_new();
+						break;
+					case KeyEvent.VK_O:
+						event_open();
+						break;
+					case KeyEvent.VK_S:
+						event_save();
+						break;
+					case KeyEvent.VK_D:
+						event_save_as();
+						break;
+					case KeyEvent.VK_X:
+						event_exit();
+						break;
+					}
+				} else {
+					switch (keyCode) {
+					// 记录是否按下Ctrl键
+					case KeyEvent.VK_CONTROL:
+						isCtrl = true;
+						break;
+					case KeyEvent.VK_SHIFT:
+						break;
+					case KeyEvent.VK_ALT:
+						break;
+					}
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// 记录是否抬起Ctrl键
+				if (isCtrl && e.getKeyCode() == KeyEvent.VK_CONTROL) {
+					isCtrl = false;
+				}
+				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					event_exit();
+				}
+			}
+
+		});
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				event_exit();
+			}
+		});
 
 	}
 
