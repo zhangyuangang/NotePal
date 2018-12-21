@@ -127,23 +127,6 @@ public class NotePal extends JFrame implements ActionListener {
 		this.setVisible(true);
 
 
-		jTextArea.getDocument().addDocumentListener(new DocumentListener() {
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				notSave = true;
-			}
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				notSave = true;
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				notSave = true;
-			}
-
-		});
 		// 注册按键事件
 		jTextArea.addKeyListener(new KeyListener() {
 
