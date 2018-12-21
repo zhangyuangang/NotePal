@@ -1,4 +1,4 @@
-
+﻿
 package com.notepal;
 
 import java.awt.Color;
@@ -126,8 +126,6 @@ public class NotePal extends JFrame implements ActionListener {
 		// 显示窗口
 		this.setVisible(true);
 
-		// 设置关闭动作
-		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		jTextArea.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
