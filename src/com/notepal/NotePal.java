@@ -1,4 +1,4 @@
-﻿
+
 package com.notepal;
 
 import java.awt.Color;
@@ -126,7 +126,26 @@ public class NotePal extends JFrame implements ActionListener {
 		// 显示窗口
 		this.setVisible(true);
 
+		// 设置关闭动作
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+		jTextArea.getDocument().addDocumentListener(new DocumentListener() {
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				notSave = true;
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				notSave = true;
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				notSave = true;
+			}
+
+		});
 		// 注册按键事件
 		jTextArea.addKeyListener(new KeyListener() {
 
